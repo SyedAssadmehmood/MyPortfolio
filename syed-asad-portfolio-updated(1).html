@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Syed Asad - Frontend Developer specializing in HTML, CSS, JavaScript and WordPress." />
+  <title>Syed Asad | Frontend Developer</title>
+  <style>
+    :root {
+      --bg: #070707;
+      --panel: #101010;
+      --panel-2: #151515;
+      --text: #f5f5f5;
+      --muted: #a0a0a0;
+      --line: #252525;
+      --accent: #c0ff23;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(192,255,35,.09), transparent 26%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(92%, var(--max)); margin: auto; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(16px);
+      background: rgba(7,7,7,.82);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: #cacaca;
+      font-size: .92rem;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-btn {
+      background: var(--accent);
+      color: #050505 !important;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-weight: 800;
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(3.4rem, 8vw, 7.3rem);
+      line-height: .9;
+      letter-spacing: -.07em;
+      margin-bottom: 25px;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .hero p {
+      max-width: 640px;
+      color: #b8b8b8;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      min-height: 49px;
+      padding: 0 19px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #050505;
+      border-color: var(--accent);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .hero-card {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background:
+        linear-gradient(145deg, rgba(192,255,35,.16), transparent 40%),
+        linear-gradient(#151515, #0c0c0c);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      box-shadow: 0 30px 80px rgba(0,0,0,.35);
+    }
+
+    .hero-card::before {
+      content: "</>";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -57%);
+      font-size: clamp(7rem, 15vw, 12rem);
+      color: rgba(255,255,255,.045);
+      font-weight: 900;
+    }
+
+    .availability {
+      position: absolute;
+      top: 23px;
+      right: 23px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid #2f2f2f;
+      background: #0b0b0b;
+      border-radius: 100px;
+      padding: 8px 11px;
+      font-size: .78rem;
+      color: #d0d0d0;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    .profile {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 20px;
+      width: 100%;
+    }
+
+    .profile strong { font-size: 1.35rem; }
+    .profile p { font-size: .9rem; margin-top: 4px; }
+
+    section { padding: 100px 0; }
+
+    .section-title {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: -.05em;
+      margin-bottom: 18px;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 1.03rem;
+    }
+
+    .services {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 270px;
+      padding: 29px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(180deg, #111, #0c0c0c);
+      transition: .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #444;
+    }
+
+    .card-number {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #050505;
+      font-weight: 900;
+      margin-bottom: 36px;
+    }
+
+    .card h3 { margin-bottom: 9px; font-size: 1.25rem; }
+    .card p { color: var(--muted); font-size: .95rem; }
+
+    .skills {
+      margin-top: 38px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+    }
+
+    .skill {
+      padding: 12px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: #ddd;
+      font-weight: 650;
+    }
+
+    .project-grid {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .project {
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 23px;
+      background: #0d0d0d;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      right: -75px;
+      top: -85px;
+      background: rgba(192,255,35,.08);
+      filter: blur(8px);
+    }
+
+    .tag {
+      width: max-content;
+      border: 1px solid #353535;
+      border-radius: 100px;
+      padding: 7px 10px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .72rem;
+      font-weight: 800;
+      color: #d6d6d6;
+    }
+
+    .project h3 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: -.045em;
+      line-height: 1;
+      margin-bottom: 13px;
+    }
+
+    .project p { color: var(--muted); max-width: 520px; }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .code-mark {
+      font-size: clamp(6rem, 15vw, 12rem);
+      color: var(--accent);
+      font-weight: 1000;
+      letter-spacing: -.09em;
+      line-height: .8;
+    }
+
+    .about-text p {
+      color: #b8b8b8;
+      margin-bottom: 17px;
+      font-size: 1.06rem;
+    }
+
+    .contact-box {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(32px, 6vw, 68px);
+      background:
+        radial-gradient(circle at 80% 20%, rgba(192,255,35,.12), transparent 26%),
+        #0d0d0d;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(2.8rem, 7vw, 5.8rem);
+      line-height: .95;
+      letter-spacing: -.06em;
+      max-width: 900px;
+    }
+
+    .contact-box h2 span { color: var(--accent); }
+    .contact-box p { color: var(--muted); margin-top: 20px; max-width: 650px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 27px 0;
+      color: #888;
+      font-size: .88rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.nav-btn) { display: none; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .hero-card { max-width: 520px; }
+      .services { grid-template-columns: 1fr; }
+      .project-grid { grid-template-columns: 1fr; }
+      .about-grid { gap: 40px; }
+    }
+
+    @media (max-width: 560px) {
+      .hero { padding-top: 55px; }
+      h1 { font-size: 3.6rem; }
+      section { padding: 75px 0; }
+      .actions .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="logo">SYED ASAD<span>.</span></a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav-btn">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Frontend Developer</div>
+          <h1>BUILDING<br><span>MODERN</span><br>WEBSITES.</h1>
+          <p>
+            Hi, I'm Syed Asad. I build responsive, clean and user-friendly websites using
+            HTML, CSS, JavaScript and WordPress.
+          </p>
+          <div class="actions">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="availability"><span class="dot"></span> Available for projects</div>
+          <div class="profile">
+            <strong>Syed Asad</strong>
+            <p>Frontend Developer • WordPress Developer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="eyebrow">What I Do</div>
+        <h2 class="section-title">Frontend development for modern businesses.</h2>
+        <p class="section-copy">
+          I create responsive websites, landing pages and WordPress sites with a strong focus on clean design,
+          usability and performance.
+        </p>
+
+        <div class="services">
+          <article class="card">
+            <div class="card-number">01</div>
+            <h3>Frontend Development</h3>
+            <p>I build modern responsive interfaces using HTML, CSS and JavaScript for desktop, tablet and mobile devices.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">02</div>
+            <h3>WordPress Development</h3>
+            <p>I create business websites, portfolio websites, landing pages and customized WordPress websites.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">03</div>
+            <h3>Website Redesign</h3>
+            <p>I improve outdated websites with cleaner layouts, better mobile responsiveness and a more professional user experience.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="eyebrow">Portfolio</div>
+        <h2 class="section-title">Selected projects.</h2>
+        <p class="section-copy">
+          A selection of websites and development work I have worked on across WordPress, frontend development and website redesign.
+        </p>
+
+        <div class="project-grid">
+          <article class="project">
+            <span class="tag">WordPress Development</span>
+            <div>
+              <h3>Shadab Vohra Decor</h3>
+              <p>Business website project focused on presenting décor services and products with a professional online presence.</p>
+              <a class="project-link" href="https://shadabvohradecor.com/" target="_blank" rel="noopener noreferrer">View Website →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="tag">WordPress Development</span>
+            <div>
+              <h3>Al Syed Jeweller</h3>
+              <p>Jewellery website project designed to showcase products, branding and business information in a clean, professional layout.</p>
+              <a class="project-link" href="https://www.alsyedjeweller.com" target="_blank" rel="noopener noreferrer">View Website →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="tag">Frontend Development</span>
+            <div>
+              <h3>The Climax Engineering</h3>
+              <p>Corporate website project with a strong focus on structured content, responsive presentation and professional business design.</p>
+              <a class="project-link" href="https://theclimaxeng.com" target="_blank" rel="noopener noreferrer">View Website →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="tag">Website Development</span>
+            <div>
+              <h3>AYS Online</h3>
+              <p>Online business website project focused on usability, responsive layouts and presenting products and services clearly.</p>
+              <a class="project-link" href="https://www.aysonline.pk" target="_blank" rel="noopener noreferrer">View Website →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="tag">Website Redesign</span>
+            <div>
+              <h3>Atlas Honda</h3>
+              <p>Website work focused on modern presentation, clear navigation, responsive layouts and a polished digital experience.</p>
+              <a class="project-link" href="https://www.atlashonda.com.pk" target="_blank" rel="noopener noreferrer">View Website →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="tag">Frontend Development</span>
+            <div>
+              <h3>Generations</h3>
+              <p>Brand website project with responsive frontend presentation, modern layouts and an improved browsing experience.</p>
+              <a class="project-link" href="https://generations.com.pk/" target="_blank" rel="noopener noreferrer">View Website →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="eyebrow">My Skills</div>
+        <h2 class="section-title">Technologies I work with.</h2>
+        <div class="skills">
+          <span class="skill">HTML5</span>
+          <span class="skill">CSS3</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">WordPress</span>
+          <span class="skill">Responsive Design</span>
+          <span class="skill">Landing Pages</span>
+          <span class="skill">Website Customization</span>
+          <span class="skill">Frontend UI</span>
+          <span class="skill">Mobile Friendly Design</span>
+          <span class="skill">Website Redesign</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="code-mark">&lt;/&gt;</div>
+        <div class="about-text">
+          <div class="eyebrow">About Me</div>
+          <h2 class="section-title">I turn designs and ideas into working websites.</h2>
+          <p>
+            My name is Syed Asad and I am a frontend developer. I work with HTML, CSS, JavaScript and WordPress
+            to create websites that are modern, responsive and easy to use.
+          </p>
+          <p>
+            I enjoy building clean interfaces and improving website experiences across desktop and mobile devices.
+            My goal is to help businesses and individuals build a professional online presence.
+          </p>
+          <a href="#contact" class="btn btn-primary">Work With Me</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div class="eyebrow">Let's Work Together</div>
+          <h2>Need a website? <span>Let's build it.</span></h2>
+          <p>
+            I'm available for frontend development, WordPress websites, landing pages and website redesign projects.
+          </p>
+          <p style="margin-top:14px;">
+            Email: <a href="mailto:syedasadmehmood21@gmail.com" style="color:var(--accent);font-weight:800;">syedasadmehmood21@gmail.com</a>
+          </p>
+          <div class="actions">
+            <a href="mailto:syedasadmehmood21@gmail.com" class="btn btn-primary">Email Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Syed Asad. All rights reserved.</span>
+      <span>HTML • CSS • JavaScript • WordPress</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
